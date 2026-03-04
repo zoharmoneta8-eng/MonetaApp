@@ -177,8 +177,7 @@ export default function NewOrder() {
               className="w-full border rounded p-2"
               value={crates || ""}
               onChange={(e) => setCrates(Number(e.target.value))}
-              placeholder="ארגזים"
-            />
+              placeholder="0"  // количество            />
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -228,7 +227,7 @@ export default function NewOrder() {
               className="w-full border rounded p-2"
               value={estimatedPrice || ""}
               onChange={(e) => setEstimatedPrice(Number(e.target.value))}
-              placeholder="מחיר משוער"
+              placeholder="0.00"  
             />
           </div>
           <div>
@@ -241,7 +240,7 @@ export default function NewOrder() {
               className="w-full border rounded p-2"
               value={finalPrice || ""}
               onChange={(e) => setFinalPrice(Number(e.target.value))}
-              placeholder="מחיר סופי"
+              placeholder="0.00"  
             />
           </div>
         </div>
@@ -289,8 +288,7 @@ export default function NewOrder() {
               className="w-full border rounded p-2"
               value={weight || ""}
               onChange={(e) => setWeight(Number(e.target.value))}
-              placeholder="משקל"
-            />
+              placeholder="0"              />
           </div>
         </div>
 
@@ -316,7 +314,7 @@ export default function NewOrder() {
                 className="w-full border rounded p-2"
                 value={payment || ""}
                 onChange={(e) => setPayment(Number(e.target.value))}
-                placeholder="סכום"
+                placeholder="0.00"
               />
             </div>
           )}
