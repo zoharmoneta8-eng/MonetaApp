@@ -114,7 +114,7 @@ export default function Home() {
               const grpCrates = groupItems.reduce((a, i) => a + (i.crates || 0), 0);
               const grpPrice = groupItems.reduce((a, i) => a + (i.finalPrice || 0), 0);
               return (
-                <div key={s} className="mb-8 bg-white rounded-lg shadow">
+                <div key={s} className="mb-8 bg-orange-50 rounded-lg shadow">
                   {/* header bar for seller */}
                   <div className="flex justify-between items-center bg-gray-100 px-4 py-3 rounded-t-lg">
                     <div className="flex items-center gap-2 font-medium text-gray-800">
