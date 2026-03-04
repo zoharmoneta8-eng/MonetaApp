@@ -177,7 +177,7 @@ export default function NewOrder() {
               className="w-full border rounded p-2"
               value={crates || ""}
               onChange={(e) => setCrates(Number(e.target.value))}
-              placeholder="0"  // количество            />
+              placeholder="0"            />
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
