@@ -21,6 +21,9 @@ export default function NewOrder() {
   const [paid, setPaid] = useState(false);
   const [payment, setPayment] = useState(0);
 
+  // after saving show summary
+  const [savedOrder, setSavedOrder] = useState<any>(null);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const order = {
@@ -38,14 +41,95 @@ export default function NewOrder() {
       payment,
     };
 
-    await fetch("/api/produce", {
+    const res = await fetch("/api/produce", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(order),
     });
-
-    router.push("/");
+    if (res.ok) {
+      setSavedOrder(order);
+    }
   };
+
+  if (savedOrder) {
+    return (
+      <main className="max-w-3xl mx-auto px-4 py-8">
+        <div className="bg-orange-500 rounded-2xl text-center p-8 text-white mb-6">
+          <div className="text-6xl">✅</div>
+          <h2 className="text-2xl font-bold mt-4">ההזמנה נשמרה!</h2>
+        </div>
+        <div className="bg-white rounded-2xl shadow p-6">
+          <dl className="grid grid-cols-1 gap-4">
+            <div className="flex justify-between">
+              <dt className="font-medium text-gray-700">שם הסוחר</dt>
+              <dd className="text-gray-900">{savedOrder.seller}</dd>
+            </div>
+            <div className="flex justify-between">
+              <dt className="font-medium text-gray-700">תאריך</dt>
+              <dd className="text-gray-900">{savedOrder.date}</dd>
+            </div>
+            <div className="flex justify-between">
+              <dt className="font-medium text-gray-700">כמות (ארגזים)</dt>
+              <dd className="text-gray-900">{savedOrder.crates}</dd>
+            </div>
+            <div className="flex justify-between">
+              <dt className="font-medium text-gray-700">זן</dt>
+              <dd className="text-gray-900">{savedOrder.variety}</dd>
+            </div>
+            <div className="flex justify-between">
+              <dt className="font-medium text-gray-700">גודל</dt>
+              <dd className="text-gray-900">{savedOrder.size}</dd>
+            </div>
+            <div className="flex justify-between">
+              <dt className="font-medium text-gray-700">מחיר משוער (₪)</dt>
+              <dd className="text-gray-900">{savedOrder.estimatedPrice}</dd>
+            </div>
+            <div className="flex justify-between">
+              <dt className="font-medium text-gray-700">מחיר סופי (₪)</dt>
+              <dd className="text-gray-900">{savedOrder.finalPrice}</dd>
+            </div>
+            <div className="flex justify-between">
+              <dt className="font-medium text-gray-700">תעודת משלוח</dt>
+              <dd className="text-gray-900">{savedOrder.deliveryNote || "-"}</dd>
+            </div>
+            <div className="flex justify-between">
+              <dt className="font-medium text-gray-700">יעד</dt>
+              <dd className="text-gray-900">{savedOrder.destination}</dd>
+            </div>
+            <div className="flex justify-between">
+              <dt className="font-medium text-gray-700">משקל (ק"ג)</dt>
+              <dd className="text-gray-900">{savedOrder.weight}</dd>
+            </div>
+            <div className="flex justify-between">
+              <dt className="font-medium text-gray-700">שולם</dt>
+              <dd className="text-gray-900">{savedOrder.paid ? "כן" : "לא"}</dd>
+            </div>
+            {savedOrder.paid && (
+              <div className="flex justify-between">
+                <dt className="font-medium text-gray-700">סכום (₪)</dt>
+                <dd className="text-gray-900">{savedOrder.payment}</dd>
+              </div>
+            )}
+          </dl>
+
+          <div className="mt-8 flex gap-4 justify-center">
+            <button
+              onClick={() => router.push("/")}
+              className="px-6 py-2 bg-gray-100 text-gray-800 rounded-full"
+            >
+              כל ההזמנות
+            </button>
+            <button
+              onClick={() => setSavedOrder(null)}
+              className="px-6 py-2 bg-orange-500 text-white rounded-full"
+            >
+              הזמנה חדשה
+            </button>
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="max-w-3xl mx-auto px-4 py-8">
