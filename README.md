@@ -1,70 +1,137 @@
-# MonetaApp – אפליקציה לחקלאי
+# MonetaApp – Agricultural Produce Tracker
 
-פרויקט זה הוא אפליקציית אינטרנט פשוטה בשפה העברית שמיועדת לעקוב אחר תוצרת חקלאית
-(אפרסקים, נקטרינות, חרובים וכו').
+A simple web application with a Hebrew UI for tracking agricultural produce (peaches, nectarines, carobs, etc.).
 
-### מטרות ראשוניות
+## Overview
 
-1. ממשק מותאם לקשיש – טקסט בעברית, עיצוב פשוט ומפורט.
-2. שמירת מידע ב‑MongoDB.
-3. תחילת עבודה כ‑Web עם אפשרות להיות רספונסיביים למובייל.
-4. אחסון הקוד ב‑GitHub וניהול ב‑git.
+MonetaApp is designed to help farmers monitor and manage their harvest with:
 
-## התקנה & הפעלה
+1. **Hebrew-first interface** – User-friendly UI with Hebrew text and clear, simple design
+2. **Data persistence** – Store produce records in MongoDB
+3. **Responsive design** – Works on desktop and mobile browsers
+4. **Modern tech stack** – Built with Next.js, React, and Tailwind CSS
+5. **GitHub integration** – Ready for version control and collaboration
 
-1. **שכפול הריפוזיטורי** (ברגע שיווצר על GitHub):
-   ```bash
-   git clone https://github.com/your‑username/MonetaApp.git
-   cd MonetaApp
-   ```
-2. **התקנת חבילות**
-   ```bash
-   npm install
-   # או yarn install
-   ```
-   החבילות הראשוניות כוללות Next.js, React, Tailwind CSS וכן ספריות לניהול DB ו‑ENV.
+## Installation & Setup
 
-3. **יצירת קובץ סביבה**
-   העתק את `.env.local.example` ל־`.env.local` ועדכן את `MONGODB_URI` לכתובת מסד הנתונים שלך.
-   אם אין לך Mongo פעיל, המערכת תעבוד גם ללא קובץ זה – תוצאת הבדיקה תישמר בזיכרון זמני.
+### 1. Clone the repository
+```bash
+git clone https://github.com/your-username/MonetaApp.git
+cd MonetaApp
+```
 
-4. **הרצת שרת הפיתוח**
-   ```bash
-   npm run dev
-   # או yarn dev
-   ```
-   היישום אמור להיפתח ב־http://localhost:3000 עם ממשק הכנסת פריטים
-   וברקע יתבצע חיבור למסד.
+### 2. Install dependencies
+```bash
+npm install
+# or
+yarn install
+```
 
-5. **בדיקה**
-   - דף הבית מציג רשימת פריטים שהוזנו במערכת.
-   - ניתן להוסיף פריט חדש באמצעות הטופס;
-   - משיכת הנתונים מתבצעת מ־API פנימי (`/api/produce`).
+This installs: Next.js, React, Tailwind CSS, MongoDB driver, and environment utilities.
 
-## ארגון הקוד
+### 3. Set up environment variables
 
-- `src/app` – רכיבי ה‑UI וספריות API של דפדפן.
-- `src/lib/mongodb.ts` – לוגיקת חיבור ל‑MongoDB.
-- `.env.local.example` – תבנית לקובץ סביבה.
+Create a `.env.local` file in the project root:
 
-## i18n
+```bash
+cp .env.local.example .env.local
+```
 
-הפרויקט משתמש ב‑i18n מובנה של Next.js; כבר מוגדר ברירת־מחדל לעברית
-(`he`) כך שהכותרת והטקסט הראשוני מותאמים.
+Then update `MONGODB_URI` with your MongoDB connection string:
 
-## דחיפה ל‑GitHub
+```
+MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/farm?retryWrites=true&w=majority
+```
 
-לאחר יצירת הריפו ב‑GitHub, אפשר להתחיל ב:
+**Note:** If you don't have MongoDB configured, the app will work with in-memory storage (data resets on server restart). To use persistent storage, create a free cluster on [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
+
+### 4. Start the development server
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+The app will open at http://localhost:3000 with the produce entry interface. The app automatically connects to MongoDB in the background.
+
+### 5. Test the app
+
+- **Home page** displays all produce items stored in the system
+- **Add new item** using the form input
+- Data is fetched and saved via the internal API (`/api/produce`)
+- Refresh the page – data should persist (if MongoDB is configured)
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── layout.tsx       – Main layout component
+│   ├── page.tsx         – Home page with produce form and list
+│   ├── globals.css      – Global styles
+│   └── api/
+│       └── produce/
+│           └── route.ts – API endpoint for GET/POST produce items
+└── lib/
+    └── mongodb.ts       – MongoDB connection logic
+
+.env.local              – Environment variables (create from template)
+next.config.ts          – Next.js configuration
+tailwind.config.ts      – Tailwind CSS settings
+tsconfig.json           – TypeScript configuration
+```
+
+## Internationalization (i18n)
+
+The app uses Next.js built-in i18n features with Hebrew (`he`) as the default locale. All UI text and prompts are displayed in Hebrew.
+
+## Available Scripts
+
+```bash
+# Development server
+npm run dev
+
+# Build for production
+npm build
+
+# Start production server
+npm run start
+
+# Run linter
+npm run lint
+```
+
+## Pushing to GitHub
+
+Once you've set up your GitHub repository:
+
 ```bash
 git add .
-git commit -m "First farm app scaffold"
+git commit -m "Initial MonetaApp scaffold"
 git branch -M main
 git remote add origin https://github.com/your-username/MonetaApp.git
 git push -u origin main
 ```
 
-**הערה**: החלף את `your-username` בשם המשתמש שלך.
+**Tip:** Replace `your-username` with your actual GitHub username.
 
+## Future Enhancements
 
-אם תצטרך להרחיב את התכונות (ניהול מלאי, דו"חות, זיהוי משתמשים וכו'),
-הפרויקט כבר מתחיל בפלטפורמה נוחה להתרחבות.
+The project is structured for easy expansion with features such as:
+- Inventory management
+- Production reports and analytics
+- User authentication
+- Mobile app version
+- Data export (CSV/PDF)
+
+## Tech Stack
+
+- **Frontend:** Next.js 16, React 19, TypeScript, Tailwind CSS
+- **Backend:** Node.js, Next.js API Routes
+- **Database:** MongoDB (optional for persistent storage)
+- **Styling:** Tailwind CSS 4
+- **Development:** ESLint, TypeScript
+
+## License
+
+This project is open source and available for personal and educational use.
