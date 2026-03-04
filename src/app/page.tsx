@@ -56,7 +56,7 @@ export default function Home() {
           <div className="bg-white rounded-2xl p-12 text-center shadow-sm border border-gray-100">
             <div className="text-6xl mb-6">🍑</div>
             <h3 className="text-2xl font-bold text-gray-900 mb-2">עדיין אין חממונות</h3>
-            <p className="text-gray-600">لחץ על "הזמנה חדשה" כדי להתחיל</p>
+            <p className="text-gray-600">לחץ על "הזמנה חדשה" כדי להתחיל</p>
           </div>
         ) : (
           <div className="flex gap-6">
