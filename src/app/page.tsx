@@ -94,7 +94,7 @@ export default function Home() {
                 className={`flex items-center gap-2 px-4 py-2 rounded-full font-medium ${selectedSeller === s ? "bg-orange-500 text-white" : "bg-gray-100 text-gray-800 hover:bg-gray-200"}`}
                 onClick={() => setSelectedSeller(s)}
               >
-                <span className="inline-flex items-center justify-center w-5 h-5 text-xs rounded-full bg-white text-gray-900">
+                <span className={`inline-flex items-center justify-center w-5 h-5 text-xs rounded-full ${selectedSeller===s?"bg-orange-500 text-white":"bg-white text-gray-900"}`}>
                   {counts[s]}
                 </span>
                 {s}
