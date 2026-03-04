@@ -55,7 +55,7 @@ export default function Home() {
           
           {/* Merchant Filter at Top Right */}
           {sellers.length > 0 && visible.length > 0 && (
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-row gap-2">
               <button onClick={() => setSelectedSeller(null)} className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${selectedSeller === null ? "bg-orange-500 text-white" : "bg-white text-orange-700 border border-orange-500 hover:bg-orange-50"}`}>
                 <span className="inline-flex w-5 h-5 text-xs items-center justify-center rounded-full bg-white text-gray-900 font-bold">{items.length}</span>
                 כל הסוחרים
