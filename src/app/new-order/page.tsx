@@ -14,7 +14,6 @@ export default function NewOrder() {
   const [variety, setVariety] = useState("");
   const [size, setSize] = useState("");
   const [estimatedPrice, setEstimatedPrice] = useState(0);
-  const [tax, setTax] = useState(0);
   const [finalPrice, setFinalPrice] = useState(0);
   const [deliveryNote, setDeliveryNote] = useState("");
   const [destination, setDestination] = useState("");
@@ -31,7 +30,6 @@ export default function NewOrder() {
       variety,
       size,
       estimatedPrice,
-      tax,
       finalPrice,
       deliveryNote,
       destination,
@@ -133,8 +131,8 @@ export default function NewOrder() {
           </div>
         </div>
 
-        {/* row 3: estimated price + tax + final price */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        {/* row 3: estimated price + final price */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
               מחיר משוער (₪)
@@ -145,18 +143,6 @@ export default function NewOrder() {
               className="w-full border rounded p-2"
               value={estimatedPrice}
               onChange={(e) => setEstimatedPrice(Number(e.target.value))}
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">
-              מס (₪)
-            </label>
-            <input
-              type="number"
-              step="0.01"
-              className="w-full border rounded p-2"
-              value={tax}
-              onChange={(e) => setTax(Number(e.target.value))}
             />
           </div>
           <div>
