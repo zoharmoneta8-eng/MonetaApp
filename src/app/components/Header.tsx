@@ -27,7 +27,7 @@ export default function Header() {
             className={`px-4 sm:px-6 md:px-8 py-2 sm:py-2 md:py-3 rounded-full font-medium sm:font-semibold text-sm sm:text-base transition-colors ${
               pathname === "/"
                 ? "bg-orange-500 text-white"
-                : "bg-gray-100 text-gray-800 hover:bg-gray-200"
+                : "bg-white text-orange-700 border border-orange-500 hover:bg-orange-50"
             }`}
           >
             כל ההזמנות
