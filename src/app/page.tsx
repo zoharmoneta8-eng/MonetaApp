@@ -41,16 +41,33 @@ export default function Home() {
           </p>
         </div>
       ) : (
-        /* Items List - We'll implement this later */
-        <div className="bg-white rounded-lg shadow">
-          <ul className="divide-y">
-            {items.map((item) => (
-              <li key={item._id || item.name} className="p-4 flex justify-between items-center">
-                <span className="font-medium text-gray-800">{item.name}</span>
-                <span className="text-gray-600">{item.qty} יחידות</span>
-              </li>
-            ))}
-          </ul>
+        <div className="bg-white rounded-lg shadow overflow-x-auto">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">תאריך</th>
+                <th className="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">סוחר</th>
+                <th className="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">ארגזים</th>
+                <th className="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">זן</th>
+                <th className="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">משקל</th>
+                <th className="px-4 py-2 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">שולם</th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {items.map((item) => (
+                <tr key={(item as any)._id || JSON.stringify(item)}>
+                  <td className="px-4 py-2 whitespace-nowrap text-gray-800 text-sm">{(item as any).date || "-"}</td>
+                  <td className="px-4 py-2 whitespace-nowrap text-gray-800 text-sm">{(item as any).seller || "-"}</td>
+                  <td className="px-4 py-2 whitespace-nowrap text-gray-800 text-sm">{(item as any).crates || "-"}</td>
+                  <td className="px-4 py-2 whitespace-nowrap text-gray-800 text-sm">{(item as any).variety || "-"}</td>
+                  <td className="px-4 py-2 whitespace-nowrap text-gray-800 text-sm">{(item as any).weight || "-"}</td>
+                  <td className="px-4 py-2 whitespace-nowrap text-gray-800 text-sm">
+                    {(item as any).paid ? "כן" : "לא"}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       )}
     </main>
