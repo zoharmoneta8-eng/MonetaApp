@@ -86,35 +86,35 @@ export default function Home() {
                 <table className="w-full divide-y divide-gray-200">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">פעולות</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">שולם</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">סכום</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">מחיר סופי</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">מחיר משוער</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">יעד</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">משקל</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">תעודה</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">גודל</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">זן</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">ארגזים</th>
-                      <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">תאריך</th>
+                      <th className="px-8 py-4 text-right text-sm font-medium text-gray-500 uppercase">פעולות</th>
+                      <th className="px-8 py-4 text-right text-sm font-medium text-gray-500 uppercase">שולם</th>
+                      <th className="px-8 py-4 text-right text-sm font-medium text-gray-500 uppercase">סכום</th>
+                      <th className="px-8 py-4 text-right text-sm font-medium text-gray-500 uppercase">מחיר סופי</th>
+                      <th className="px-8 py-4 text-right text-sm font-medium text-gray-500 uppercase">מחיר משוער</th>
+                      <th className="px-8 py-4 text-right text-sm font-medium text-gray-500 uppercase">יעד</th>
+                      <th className="px-8 py-4 text-right text-sm font-medium text-gray-500 uppercase">משקל</th>
+                      <th className="px-8 py-4 text-right text-sm font-medium text-gray-500 uppercase">תעודה</th>
+                      <th className="px-8 py-4 text-right text-sm font-medium text-gray-500 uppercase">גודל</th>
+                      <th className="px-8 py-4 text-right text-sm font-medium text-gray-500 uppercase">זן</th>
+                      <th className="px-8 py-4 text-right text-sm font-medium text-gray-500 uppercase">ארגזים</th>
+                      <th className="px-8 py-4 text-right text-sm font-medium text-gray-500 uppercase">תאריך</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200">
                     {visible.map((item) => (
                       <tr key={(item as any)._id || JSON.stringify(item)}>
-                        <td className="px-6 py-4 text-sm"><button className="text-red-500">🗑</button> <button className="text-orange-500">✏</button></td>
-                        <td className="px-6 py-4 text-sm">{(item as any).paid ? "כן" : "לא"}</td>
-                        <td className="px-6 py-4 text-sm">{(item as any).paid ? `₪${(item as any).payment || 0}` : "-"}</td>
-                        <td className="px-6 py-4 text-sm font-bold text-orange-700">₪{((item as any).finalPrice || 0).toFixed(2)}</td>
-                        <td className="px-6 py-4 text-sm">₪{((item as any).estimatedPrice || 0).toFixed(2)}</td>
-                        <td className="px-6 py-4 text-sm">{(item as any).destination || "-"}</td>
-                        <td className="px-6 py-4 text-sm">{(item as any).weight || "-"}</td>
-                        <td className="px-6 py-4 text-sm">{(item as any).deliveryNote || "-"}</td>
-                        <td className="px-6 py-4 text-sm">{(item as any).size || "-"}</td>
-                        <td className="px-6 py-4 text-sm">{(item as any).variety || "-"}</td>
-                        <td className="px-6 py-4 text-sm">{(item as any).crates || "-"}</td>
-                        <td className="px-6 py-4 text-sm">{(item as any).date || "-"}</td>
+                        <td className="px-8 py-5 text-base"><button className="text-red-500">🗑</button> <button className="text-orange-500">✏</button></td>
+                        <td className="px-8 py-5 text-base">{(item as any).paid ? "כן" : "לא"}</td>
+                        <td className="px-8 py-5 text-base">{(item as any).paid ? `₪${(item as any).payment || 0}` : "-"}</td>
+                        <td className="px-8 py-5 text-base font-bold text-orange-700">₪{((item as any).finalPrice || 0).toFixed(2)}</td>
+                        <td className="px-8 py-5 text-base">₪{((item as any).estimatedPrice || 0).toFixed(2)}</td>
+                        <td className="px-8 py-5 text-base">{(item as any).destination || "-"}</td>
+                        <td className="px-8 py-5 text-base">{(item as any).weight || "-"}</td>
+                        <td className="px-8 py-5 text-base">{(item as any).deliveryNote || "-"}</td>
+                        <td className="px-8 py-5 text-base">{(item as any).size || "-"}</td>
+                        <td className="px-8 py-5 text-base">{(item as any).variety || "-"}</td>
+                        <td className="px-8 py-5 text-base">{(item as any).crates || "-"}</td>
+                        <td className="px-8 py-5 text-base">{(item as any).date || "-"}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -145,43 +145,43 @@ export default function Home() {
                       <table className="w-full divide-y divide-gray-200">
                         <thead className="bg-gray-50">
                           <tr>
-                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">פעולות</th>
-                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">שולם</th>
-                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">סכום</th>
-                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">מחיר סופי</th>
-                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">מחיר משוער</th>
-                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">יעד</th>
-                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">משקל</th>
-                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">תעודה</th>
-                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">גודל</th>
-                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">זן</th>
-                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">ארגזים</th>
-                            <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">תאריך</th>
+                            <th className="px-8 py-4 text-right text-sm font-medium text-gray-500 uppercase">פעולות</th>
+                            <th className="px-8 py-4 text-right text-sm font-medium text-gray-500 uppercase">שולם</th>
+                            <th className="px-8 py-4 text-right text-sm font-medium text-gray-500 uppercase">סכום</th>
+                            <th className="px-8 py-4 text-right text-sm font-medium text-gray-500 uppercase">מחיר סופי</th>
+                            <th className="px-8 py-4 text-right text-sm font-medium text-gray-500 uppercase">מחיר משוער</th>
+                            <th className="px-8 py-4 text-right text-sm font-medium text-gray-500 uppercase">יעד</th>
+                            <th className="px-8 py-4 text-right text-sm font-medium text-gray-500 uppercase">משקל</th>
+                            <th className="px-8 py-4 text-right text-sm font-medium text-gray-500 uppercase">תעודה</th>
+                            <th className="px-8 py-4 text-right text-sm font-medium text-gray-500 uppercase">גודל</th>
+                            <th className="px-8 py-4 text-right text-sm font-medium text-gray-500 uppercase">זן</th>
+                            <th className="px-8 py-4 text-right text-sm font-medium text-gray-500 uppercase">ארגזים</th>
+                            <th className="px-8 py-4 text-right text-sm font-medium text-gray-500 uppercase">תאריך</th>
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-gray-200">
                           {groupItems.map((item) => (
                             <tr key={(item as any)._id || JSON.stringify(item)}>
-                              <td className="px-6 py-4 text-sm"><button className="text-red-500">🗑</button> <button className="text-orange-500">✏</button></td>
-                              <td className="px-6 py-4 text-sm">{(item as any).paid ? "כן" : "לא"}</td>
-                              <td className="px-6 py-4 text-sm">{(item as any).paid ? `₪${(item as any).payment || 0}` : "-"}</td>
-                              <td className="px-6 py-4 text-sm font-bold text-orange-700">₪{((item as any).finalPrice || 0).toFixed(2)}</td>
-                              <td className="px-6 py-4 text-sm">₪{((item as any).estimatedPrice || 0).toFixed(2)}</td>
-                              <td className="px-6 py-4 text-sm">{(item as any).destination || "-"}</td>
-                              <td className="px-6 py-4 text-sm">{(item as any).weight || "-"}</td>
-                              <td className="px-6 py-4 text-sm">{(item as any).deliveryNote || "-"}</td>
-                              <td className="px-6 py-4 text-sm">{(item as any).size || "-"}</td>
-                              <td className="px-6 py-4 text-sm">{(item as any).variety || "-"}</td>
-                              <td className="px-6 py-4 text-sm">{(item as any).crates || "-"}</td>
-                              <td className="px-6 py-4 text-sm">{(item as any).date || "-"}</td>
+                              <td className="px-8 py-5 text-base"><button className="text-red-500">🗑</button> <button className="text-orange-500">✏</button></td>
+                              <td className="px-8 py-5 text-base">{(item as any).paid ? "כן" : "לא"}</td>
+                              <td className="px-8 py-5 text-base">{(item as any).paid ? `₪${(item as any).payment || 0}` : "-"}</td>
+                              <td className="px-8 py-5 text-base font-bold text-orange-700">₪{((item as any).finalPrice || 0).toFixed(2)}</td>
+                              <td className="px-8 py-5 text-base">₪{((item as any).estimatedPrice || 0).toFixed(2)}</td>
+                              <td className="px-8 py-5 text-base">{(item as any).destination || "-"}</td>
+                              <td className="px-8 py-5 text-base">{(item as any).weight || "-"}</td>
+                              <td className="px-8 py-5 text-base">{(item as any).deliveryNote || "-"}</td>
+                              <td className="px-8 py-5 text-base">{(item as any).size || "-"}</td>
+                              <td className="px-8 py-5 text-base">{(item as any).variety || "-"}</td>
+                              <td className="px-8 py-5 text-base">{(item as any).crates || "-"}</td>
+                              <td className="px-8 py-5 text-base">{(item as any).date || "-"}</td>
                             </tr>
                           ))}
                         </tbody>
                         <tfoot>
                           <tr className="font-semibold bg-gray-50">
-                            <td className="px-6 py-3 text-right">סה"כ</td>
-                            <td /><td /><td className="px-6 py-3">₪{grpPrice.toFixed(2)}</td>
-                            <td /><td /><td /><td /><td /><td /><td className="px-6 py-3">{grpCrates}</td>
+                            <td className="px-8 py-4 text-right">סה"כ</td>
+                            <td /><td /><td className="px-8 py-4">₪{grpPrice.toFixed(2)}</td>
+                            <td /><td /><td /><td /><td /><td /><td className="px-8 py-4">{grpCrates}</td>
                             <td />
                           </tr>
                         </tfoot>
