@@ -45,36 +45,39 @@ export default function Home() {
   return (
     <main className="bg-orange-50 min-h-screen">
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="mb-8 text-right">
-          <h2 className="text-3xl font-bold text-gray-900 mb-2">כל ההזמנות</h2>
-          <p className="text-gray-600">
-            {merchantCount} סוחרים • {orderCount} הזמנות
-          </p>
+        <div className="mb-8 flex items-start justify-between">
+          <div className="text-right">
+            <h2 className="text-3xl font-bold text-gray-900 mb-2">כל ההזמנות</h2>
+            <p className="text-gray-600">
+              {merchantCount} סוחרים • {orderCount} הזמנות
+            </p>
+          </div>
+          
+          {/* Merchant Filter at Top Right */}
+          {sellers.length > 0 && visible.length > 0 && (
+            <div className="flex flex-col gap-2">
+              <button onClick={() => setSelectedSeller(null)} className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${selectedSeller === null ? "bg-orange-500 text-white" : "bg-white text-orange-700 border border-orange-500 hover:bg-orange-50"}`}>
+                <span className="inline-flex w-5 h-5 text-xs items-center justify-center rounded-full bg-white text-gray-900 font-bold">{items.length}</span>
+                כל הסוחרים
+              </button>
+              {sellers.map((s) => (
+                <button key={s} onClick={() => setSelectedSeller(s)} className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors whitespace-nowrap ${selectedSeller === s ? "bg-orange-500 text-white" : "bg-white text-orange-700 border border-orange-500 hover:bg-orange-50"}`}>
+                  <span className={`inline-flex w-5 h-5 text-xs items-center justify-center rounded-full font-bold ${selectedSeller === s ? "bg-white text-orange-500" : "bg-white text-gray-900"}`}>{counts[s]}</span>
+                  {s}
+                </button>
+              ))}
+            </div>
+          )}
         </div>
 
         {visible.length === 0 ? (
           <div className="bg-white rounded-2xl p-12 text-center shadow-sm border border-gray-100">
             <div className="text-6xl mb-6">🍑</div>
             <h3 className="text-2xl font-bold text-gray-900 mb-2">עדיין אין חממונות</h3>
-            <p className="text-gray-600">לחץ על "הزמנה חדשה" כדי להתחיל</p>
+            <p className="text-gray-600">לחץ על "הזמנה חדשה" כדי להתחיל</p>
           </div>
         ) : (
           <>
-            {/* Merchant Filter at Top */}
-            {sellers.length > 0 && (
-              <div className="mb-6 flex gap-2 justify-end flex-wrap">
-                <button onClick={() => setSelectedSeller(null)} className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${selectedSeller === null ? "bg-orange-500 text-white" : "bg-white text-orange-700 border border-orange-500 hover:bg-orange-50"}`}>
-                  <span className="inline-flex w-5 h-5 text-xs items-center justify-center rounded-full bg-white text-gray-900 font-bold">{items.length}</span>
-                  כל הסוחרים
-                </button>
-                {sellers.map((s) => (
-                  <button key={s} onClick={() => setSelectedSeller(s)} className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-colors ${selectedSeller === s ? "bg-orange-500 text-white" : "bg-white text-orange-700 border border-orange-500 hover:bg-orange-50"}`}>
-                    <span className={`inline-flex w-5 h-5 text-xs items-center justify-center rounded-full font-bold ${selectedSeller === s ? "bg-white text-orange-500" : "bg-white text-gray-900"}`}>{counts[s]}</span>
-                    {s}
-                  </button>
-                ))}
-              </div>
-            )}
 
             {/* Display Tables */}
             {selectedSeller ? (
