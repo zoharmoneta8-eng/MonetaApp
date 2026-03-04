@@ -161,7 +161,7 @@ export default function NewOrder() {
               className="w-full border rounded p-2"
               value={seller}
               onChange={(e) => setSeller(e.target.value)}
-              placeholder="הכנס שם סוחר"
+              placeholder="שם סוחר"
             />
           </div>
         </div>
@@ -175,8 +175,9 @@ export default function NewOrder() {
             <input
               type="number"
               className="w-full border rounded p-2"
-              value={crates}
+              value={crates || ""}
               onChange={(e) => setCrates(Number(e.target.value))}
+              placeholder="ארגזים"
             />
           </div>
           <div>
@@ -225,8 +226,9 @@ export default function NewOrder() {
               type="number"
               step="0.01"
               className="w-full border rounded p-2"
-              value={estimatedPrice}
+              value={estimatedPrice || ""}
               onChange={(e) => setEstimatedPrice(Number(e.target.value))}
+              placeholder="מחיר משוער"
             />
           </div>
           <div>
@@ -237,8 +239,9 @@ export default function NewOrder() {
               type="number"
               step="0.01"
               className="w-full border rounded p-2"
-              value={finalPrice}
+              value={finalPrice || ""}
               onChange={(e) => setFinalPrice(Number(e.target.value))}
+              placeholder="מחיר סופי"
             />
           </div>
         </div>
@@ -253,7 +256,7 @@ export default function NewOrder() {
             className="w-full border rounded p-2"
             value={deliveryNote}
             onChange={(e) => setDeliveryNote(e.target.value)}
-            placeholder="מספר תעודת משלוח"
+            placeholder="תעודת משלוח"
           />
         </div>
 
@@ -284,8 +287,9 @@ export default function NewOrder() {
               type="number"
               step="0.01"
               className="w-full border rounded p-2"
-              value={weight}
+              value={weight || ""}
               onChange={(e) => setWeight(Number(e.target.value))}
+              placeholder="משקל"
             />
           </div>
         </div>
@@ -310,8 +314,9 @@ export default function NewOrder() {
                 type="number"
                 step="0.01"
                 className="w-full border rounded p-2"
-                value={payment}
+                value={payment || ""}
                 onChange={(e) => setPayment(Number(e.target.value))}
+                placeholder="סכום"
               />
             </div>
           )}
