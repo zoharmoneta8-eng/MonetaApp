@@ -117,7 +117,12 @@ export default function Home() {
                 <div key={s} className="mb-8 bg-white rounded-lg shadow">
                   {/* header bar for seller */}
                   <div className="flex justify-between items-center bg-gray-100 px-4 py-3 rounded-t-lg">
-                    <div className="font-medium text-gray-800">{s}</div>
+                    <div className="flex items-center gap-2 font-medium text-gray-800">
+                      {s}
+                      <span className="inline-flex items-center justify-center w-6 h-6 text-xs rounded-full bg-orange-500 text-white">
+                        {groupItems.length}
+                      </span>
+                    </div>
                     <div className="text-orange-700 font-semibold">
                       ₪{grpPrice.toFixed(2)}   {grpCrates} ארגזים
                     </div>
