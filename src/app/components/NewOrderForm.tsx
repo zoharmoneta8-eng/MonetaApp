@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { varieties, sizes, destinations } from "@/lib/options";
+import { sellers, varieties, sizes, destinations } from "@/lib/options";
 
 interface NewOrderFormProps {
   onOrderSaved: () => void;
@@ -154,13 +154,25 @@ export default function NewOrderForm({ onOrderSaved }: NewOrderFormProps) {
             <label className="block text-sm font-medium text-gray-700 mb-1">
               שם הסוחר
             </label>
-            <input
+            {/* <input
               type="text"
               className="w-full border rounded p-2"
               value={seller}
               onChange={(e) => setSeller(e.target.value)}
               placeholder="שם סוחר"
-            />
+            /> */}
+            <select
+              className="w-full border rounded p-2"
+              value={seller}
+              onChange={(e) => setSeller(e.target.value)}
+            >
+              <option value="">בחר סוחר...</option>
+              {sellers.map((v) => (
+                <option key={v} value={v}>
+                  {v}
+                </option>
+              ))}
+            </select>
           </div>
         </div>
 
