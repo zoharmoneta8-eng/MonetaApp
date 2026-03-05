@@ -1,16 +1,16 @@
 "use client";
 
-import { useRouter, usePathname } from "next/navigation";
+export type View = "orders" | "new-order";
 
-export default function Header() {
-  const router = useRouter();
-  const pathname = usePathname();
+interface HeaderProps {
+  activeView: View;
+  onViewChange: (view: View) => void;
+}
 
+export default function Header({ activeView, onViewChange }: HeaderProps) {
   return (
     <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-3 sm:px-4 md:px-6 py-3 sm:py-4 md:py-6 flex items-center justify-between">
-        
-        {/* Right side: Logo & Title */}
         <div className="flex items-center gap-2 sm:gap-3 md:gap-4">
           <div className="text-3xl sm:text-4xl md:text-5xl">🍑</div>
           <div>
@@ -19,13 +19,11 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Left side: Navigation */}
         <nav className="flex items-center gap-2 sm:gap-3 md:gap-4">
-          {/* "All Orders" button */}
           <button
-            onClick={() => router.push("/")}
+            onClick={() => onViewChange("orders")}
             className={`px-4 sm:px-6 md:px-8 py-2 sm:py-2 md:py-3 rounded-full font-medium sm:font-semibold text-sm sm:text-base transition-colors ${
-              pathname === "/"
+              activeView === "orders"
                 ? "bg-orange-500 text-white"
                 : "bg-white text-orange-700 border border-orange-500 hover:bg-orange-50"
             }`}
@@ -33,11 +31,10 @@ export default function Header() {
             כל ההזמנות
           </button>
 
-          {/* "New Order" button */}
           <button
-            onClick={() => router.push("/new-order")}
+            onClick={() => onViewChange("new-order")}
             className={`px-4 sm:px-6 md:px-8 py-2 sm:py-2 md:py-3 rounded-full font-medium sm:font-semibold text-sm sm:text-base transition-colors ${
-              pathname === "/new-order"
+              activeView === "new-order"
                 ? "bg-orange-500 text-white"
                 : "bg-orange-100 text-orange-700 hover:bg-orange-200"
             }`}

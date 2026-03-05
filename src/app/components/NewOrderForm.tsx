@@ -2,12 +2,12 @@
 
 import { useState } from "react";
 import { varieties, sizes, destinations } from "@/lib/options";
-import { useRouter } from "next/navigation";
 
-export default function NewOrder() {
-  const router = useRouter();
+interface NewOrderFormProps {
+  onOrderSaved: () => void;
+}
 
-  // form state
+export default function NewOrderForm({ onOrderSaved }: NewOrderFormProps) {
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [seller, setSeller] = useState("");
   const [crates, setCrates] = useState(0);
@@ -21,7 +21,6 @@ export default function NewOrder() {
   const [paid, setPaid] = useState(false);
   const [payment, setPayment] = useState(0);
 
-  // after saving show summary
   const [savedOrder, setSavedOrder] = useState<any>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -114,7 +113,7 @@ export default function NewOrder() {
 
           <div className="mt-8 flex gap-4 justify-center">
             <button
-              onClick={() => router.push("/")}
+              onClick={onOrderSaved}
               className="px-6 py-2 bg-gray-100 text-gray-800 rounded-full"
             >
               כל ההזמנות
@@ -139,7 +138,6 @@ export default function NewOrder() {
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-2xl shadow">
-        {/* row 1: date + seller */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -166,7 +164,6 @@ export default function NewOrder() {
           </div>
         </div>
 
-        {/* row 2: crates + variety + size */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -177,7 +174,8 @@ export default function NewOrder() {
               className="w-full border rounded p-2"
               value={crates || ""}
               onChange={(e) => setCrates(Number(e.target.value))}
-              placeholder="0"            />
+              placeholder="0"
+            />
           </div>
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -215,7 +213,6 @@ export default function NewOrder() {
           </div>
         </div>
 
-        {/* row 3: estimated price + final price */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -227,7 +224,7 @@ export default function NewOrder() {
               className="w-full border rounded p-2"
               value={estimatedPrice || ""}
               onChange={(e) => setEstimatedPrice(Number(e.target.value))}
-              placeholder="0.00"  
+              placeholder="0.00"
             />
           </div>
           <div>
@@ -240,12 +237,11 @@ export default function NewOrder() {
               className="w-full border rounded p-2"
               value={finalPrice || ""}
               onChange={(e) => setFinalPrice(Number(e.target.value))}
-              placeholder="0.00"  
+              placeholder="0.00"
             />
           </div>
         </div>
 
-        {/* row 4: delivery note */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">
             תעודת משלוח
@@ -259,7 +255,6 @@ export default function NewOrder() {
           />
         </div>
 
-        {/* row 5: destination + weight */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -288,11 +283,11 @@ export default function NewOrder() {
               className="w-full border rounded p-2"
               value={weight || ""}
               onChange={(e) => setWeight(Number(e.target.value))}
-              placeholder="0"              />
+              placeholder="0"
+            />
           </div>
         </div>
 
-        {/* row 6: paid checkbox + payment amount */}
         <div className="flex items-center gap-4">
           <label className="inline-flex items-center">
             <input
