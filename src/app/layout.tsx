@@ -1,16 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   title: "MonetaApp - מערכת ניהול חווה",
@@ -24,9 +13,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="he" dir="rtl">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-orange-50`}
-      >
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="antialiased bg-orange-50">
         {children}
       </body>
     </html>
