@@ -4,6 +4,9 @@
 export const sellers = [
   "שרביט",
   "ח.ע בסד חן",
+  "טריג",
+  "יוחאי",
+  "אושר עד",
   // add more sellers types
 ];
 

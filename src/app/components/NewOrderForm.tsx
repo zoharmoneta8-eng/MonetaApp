@@ -2,12 +2,14 @@
 
 import { useState } from "react";
 import { sellers, varieties, sizes, destinations } from "@/lib/options";
+import { type Item } from "./OrdersView";
 
 interface NewOrderFormProps {
-  onOrderSaved: () => void;
+  onOrderSaved: (item: Item) => void;
+  onNavigateToOrders: () => void;
 }
 
-export default function NewOrderForm({ onOrderSaved }: NewOrderFormProps) {
+export default function NewOrderForm({ onOrderSaved, onNavigateToOrders }: NewOrderFormProps) {
   const [date, setDate] = useState(new Date().toISOString().slice(0, 10));
   const [seller, setSeller] = useState("");
   const [crates, setCrates] = useState(0);
@@ -46,7 +48,9 @@ export default function NewOrderForm({ onOrderSaved }: NewOrderFormProps) {
       body: JSON.stringify(order),
     });
     if (res.ok) {
-      setSavedOrder(order);
+      const saved = await res.json();
+      onOrderSaved(saved);
+      setSavedOrder(saved);
     }
   };
 
@@ -113,7 +117,7 @@ export default function NewOrderForm({ onOrderSaved }: NewOrderFormProps) {
 
           <div className="mt-8 flex gap-4 justify-center">
             <button
-              onClick={onOrderSaved}
+              onClick={onNavigateToOrders}
               className="px-6 py-2 bg-gray-100 text-gray-800 rounded-full"
             >
               כל ההזמנות
@@ -154,13 +158,6 @@ export default function NewOrderForm({ onOrderSaved }: NewOrderFormProps) {
             <label className="block text-sm font-medium text-gray-700 mb-1">
               שם הסוחר
             </label>
-            {/* <input
-              type="text"
-              className="w-full border rounded p-2"
-              value={seller}
-              onChange={(e) => setSeller(e.target.value)}
-              placeholder="שם סוחר"
-            /> */}
             <select
               className="w-full border rounded p-2"
               value={seller}
